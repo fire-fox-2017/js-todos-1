@@ -30,7 +30,7 @@ class Todo {
 
   add (task) {
     this._list.push(task);
-    console.log(`Added task '${task.task}' to the list.`)
+    console.log(`Added  "${task.task}" to the TODO list.`)
     this.save();
   }
 
@@ -48,7 +48,7 @@ class Todo {
     if (id > this._list.length)
       console.log("Sorry, you have entered invalid task ID.")
     else {
-      console.log(`Deleting task:${id}. ${this._list[id-1].task}.`);
+      console.log(`Deleted "${this._list[id-1].task}" from TODO List.`);
       this._list.splice(id-1,1);
       this.save();
     }
