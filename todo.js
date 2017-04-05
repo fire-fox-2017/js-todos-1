@@ -20,10 +20,11 @@ class Todo {
   list () {
     if(this._list.length > 0) {
       for (let i = 0 ; i < this._list.length ; i++) {
-        console.log(`${i+1}. ${this._list[i].task}`);
+        let complete = (this._list[i].complete) ? "[X]" : "[ ]";
+        console.log(`${i+1}. ${complete} ${this._list[i].task}`);
       }
     } else {
-      console.log(`List is still empty.`);
+      console.log(`*** List is empty. ***`);
     }
   }
 
@@ -35,19 +36,68 @@ class Todo {
 
   taskInfo(id) {
     // id == the order of the task in the list
-    if (id >= this._list.length)
+    if (id > this._list.length)
       console.log("Sorry, you have entered invalid task ID.")
     else {
-      this._list.forEach( (val, index, array) => {
-        if(index == id-1)
-          console.log(`${id}. ${val.task}`);
-      });
+      let complete = (this._list[id-1].complete) ? "[X]" : "[ ]";
+      console.log(`${id}. ${complete} ${this._list[id-1].task}`);
+    }
+  }
+
+  delete(id) {
+    if (id > this._list.length)
+      console.log("Sorry, you have entered invalid task ID.")
+    else {
+      console.log(`Deleting task:${id}. ${this._list[id-1].task}.`);
+      this._list.splice(id-1,1);
+      this.save();
+    }
+  }
+
+  complete(id) {
+    if (id > this._list.length)
+      console.log("Sorry, you have entered invalid task ID.")
+    else {
+      // this._list.forEach( (val, index, array) => {
+      //   if(index == id-1) {
+      //     val.complete = true;
+      //     console.log(`Mark task:${id}. ${val.task} to complete.`);
+      //     this.save();
+      //   }
+      // });
+      if (this._list[id-1].complete)
+        console.log(`Task:${id}. ${this._list[id-1].task} is already completed.`);
+      else {
+        this._list[id-1].complete = true;
+        console.log(`Mark task:${id}. ${this._list[id-1].task} to complete.`);
+        this.save();
+      }
+    }
+  }
+
+  uncomplete(id) {
+    if (id > this._list.length)
+      console.log("Sorry, you have entered invalid task ID.")
+    else {
+      // this._list.forEach( (val, index, array) => {
+      //   if(index == id-1) {
+      //     val.complete = false;
+      //     console.log(`Mark task:${id}. ${val.task} to uncomplete.`);
+      //     this.save();
+      //   }
+      // });
+      if (!this._list[id-1].complete)
+        console.log(`Task:${id}. ${this._list[id-1].task} is already uncomplete .`);
+      else {
+        this._list[id-1].complete = false;
+        console.log(`Mark task:${id}. ${this._list[id-1].task} to uncompleted.`);
+        this.save();
+      }
     }
   }
 
   save() {
     let testfile = this._file;
-
 /*
     fs.writeFileSync(testfile, "[");
     this._list.forEach( (val, index, array) => {
@@ -65,9 +115,6 @@ class Todo {
         return console.error(err);
       console.log(`List has been saved to ${this._file}`);
     });
-
-
-
   }
 
 }
@@ -124,6 +171,16 @@ if(params.length > 0) {
       break;
     case 'task':
       todo.taskInfo(params[1]);
+      break;
+
+    case 'delete':
+      todo.delete(params[1]);
+      break;
+    case 'complete':
+      todo.complete(params[1]);
+      break;
+    case 'uncomplete':
+      todo.uncomplete(params[1]);
       break;
     default:
       console.log(`Sorry, wrong command.`);
