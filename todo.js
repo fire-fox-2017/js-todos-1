@@ -39,7 +39,7 @@ class toDo {
         this._data.push(dataBaru);
 
         this.saveJson(this._data);
-        console.log('Data berhasil ditambah');
+        console.log(`Data ${dataBaru.task} berhasil ditambah`);
 
 
     }
@@ -67,9 +67,11 @@ class toDo {
 
     deleteTask(idTask) {
         let jumlah = 0;
+        let dataDelete = '';
         if (this._data.length > 0) {
             for (var i = 0; i < this._data.length; i++) {
                 if (this._data[i].id == idTask) {
+                    dataDelete = this._data[i].task;
                     this._data.splice(i, 1);
                     jumlah++;
                 }
@@ -77,7 +79,7 @@ class toDo {
             if (jumlah == 0) {
                 console.log('Data tidak ditemukan');
             } else {
-              console.log('Data berhasil dihapus');
+              console.log(`Data ${dataDelete} berhasil dihapus`);
             }
         } else {
             console.log(`Data Task Kosong`);
