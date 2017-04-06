@@ -17,7 +17,7 @@ class toDo {
     listTask() {
         if (this._data.length > 0) {
             for (var i = 0; i < this._data.length; i++) {
-              if(this._data[i].marked == 'false'){
+              if(this._data[i].marked == false){
                 console.log(`${i+1}. [] ${this._data[i].id} : ${this._data[i].task}`);
               } else {
                 console.log(`${i+1}. [x] ${this._data[i].id} : ${this._data[i].task}`);
@@ -35,7 +35,7 @@ class toDo {
         let nomorID = tmpID.split('').pop();
         let idfinal = id + (+nomorID+1);
 
-        let dataBaru = {id : idfinal, task : task};
+        let dataBaru = {id : idfinal, marked:false ,task : task};
         this._data.push(dataBaru);
 
         this.saveJson(this._data);
@@ -49,7 +49,7 @@ class toDo {
         if (this._data.length > 0) {
             for (var i = 0; i < this._data.length; i++) {
                 if (this._data[i].id == idTask) {
-                  if(this._data[i].marked == 'false'){
+                  if(this._data[i].marked == false){
                     console.log(`${i+1}. [] ${this._data[i].id} : ${this._data[i].task}`);
                   } else {
                     console.log(`${i+1}. [x] ${this._data[i].id} : ${this._data[i].task}`);
@@ -91,7 +91,7 @@ class toDo {
       if (this._data.length > 0) {
           for (var i = 0; i < this._data.length; i++) {
               if (this._data[i].id == idTask) {
-                  this._data[i].marked = 'true';
+                  this._data[i].marked = true;
                   jumlah++;
               }
           }
@@ -113,7 +113,7 @@ class toDo {
       if (this._data.length > 0) {
           for (var i = 0; i < this._data.length; i++) {
               if (this._data[i].id == idTask) {
-                  this._data[i].marked = 'false';
+                  this._data[i].marked = false;
                   jumlah++;
               }
           }
