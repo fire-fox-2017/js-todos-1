@@ -32,8 +32,8 @@ class toDo {
         let jumlah = 0;
         let id = 'ID';
         let tmpID = this._data[this._data.length-1].id;
-        let nomorID = tmpID.split('').pop();
-        let idfinal = id + (+nomorID+1);
+        let nomorID = tmpID.slice(2);
+        let idfinal = id + (+nomorID +1);
 
         let dataBaru = {id : idfinal, marked:false ,task : task};
         this._data.push(dataBaru);
