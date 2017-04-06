@@ -152,7 +152,7 @@ if (input[0] === undefined || input[0] === 'help') {
     appToDo.deleteTask(input);
 } else if (input[0] === 'complete') {
     input.shift();
-    appToDo.completeTask(input.join(''));
+    appToDo.completeTask(input);
 } else if (input[0] === 'uncomplete') {
     input.shift();
     appToDo.uncompleteTask(input);
