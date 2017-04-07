@@ -41,7 +41,7 @@ class ToDo {
   deleteTask(id){
     for(let i=0; i<this.list.length; i++){
       if(this.list[i].id === Number(id)){
-        console.log(`Deleted ${this.list[i]} from your TODO list...`)
+        console.log(`Deleted ${this.list[i].task} from your TODO list...`)
         this.list.splice(i,1);
         this.overWrite()
       }
