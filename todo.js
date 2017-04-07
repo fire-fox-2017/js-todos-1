@@ -11,6 +11,7 @@ class ToDo {
       this.list.push(new Task(this.list[this.list.length-1].id+1 , task))
       this.overWrite()
     }
+    console.log(`Added ${task} to your TODO list...`)
   }
   overWrite(){
     fs.writeFileSync('data.json', JSON.stringify(this.list), 'utf8')
@@ -40,6 +41,7 @@ class ToDo {
   deleteTask(id){
     for(let i=0; i<this.list.length; i++){
       if(this.list[i].id === Number(id)){
+        console.log(`Deleted ${this.list[i]} from your TODO list...`)
         this.list.splice(i,1);
         this.overWrite()
       }
