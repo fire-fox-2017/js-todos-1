@@ -1,1 +1,26 @@
-[{"task":"Buka pintu","complete":true},{"task":"Tutup buku","complete":false},{"task":"Parut kelapa","complete":true},{"task":"Baca koran","complete":false},{"task":"Masak nasi","complete":false},{"task":"Cuci muka","complete":false},{"task":"Baca buku","complete":false}]
+[
+    {
+        "task": "Test1",
+        "complete": false
+    },
+    {
+        "task": "test2",
+        "complete": false
+    },
+    {
+        "task": "test3",
+        "complete": false
+    },
+    {
+        "task": "test5",
+        "complete": false
+    },
+    {
+        "task": "test6",
+        "complete": false
+    },
+    {
+        "task": "test8",
+        "complete": false
+    }
+]

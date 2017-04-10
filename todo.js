@@ -22,7 +22,7 @@ class TODO {
     }
 
     saveToFile() {
-        fs.writeFile('data.json', JSON.stringify(this._data), (err) => {
+        fs.writeFile('data.json', JSON.stringify(this._data, null, 4), (err) => {
             if (err) {
                 console.log(err);
             }
@@ -42,13 +42,8 @@ class TODO {
     }
 
     delete(num) {
-        let result
-        for (let i = 0; i < this._data.length; i++) {
-            if (num == (i + 1)) {
-                this._data.splice(num - 1, 1)
-                result = `Deleted "${this._data[i-1].task}" from your TODO list...`
-            }
-        }
+        let data = this._data.splice(num - 1, 1)
+        let result = `Deleted "${data[0].task}" from your TODO list...`
         return result
     }
 
